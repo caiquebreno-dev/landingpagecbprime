@@ -1,0 +1,205 @@
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dark: #8A6A1E;
+  --gold-glow: rgba(201, 168, 76, 0.20);
+  --gold-border: rgba(201, 168, 76, 0.25);
+  --black: #060606;
+  --black-glass: rgba(13, 13, 13, 0.6);
+  --silver: #A8B0BC;
+  --white: #F5F5F5;
+  
+  --font-main: 'Titillium Web', sans-serif;
+  --radius: 14px;
+  --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--black);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Backgrounds */
+.bg-image {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://cbprimeauto.netlify.app/Imagens/beautiful-car-washing-service.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -3;
+}
+
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 6, 6, 0.85) 0%, rgba(6, 6, 6, 0.98) 100%);
+  z-index: -2;
+}
+
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Header / Logo */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 15px var(--gold-glow));
+  mix-blend-mode: screen;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-weight: 200;
+  font-size: 14px;
+  color: var(--silver);
+  letter-spacing: 0.5px;
+}
+
+.gold-divider {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto 0;
+}
+
+/* Links List */
+.links-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  background: var(--black-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  text-decoration: none;
+  color: var(--white);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), transparent);
+  opacity: 0.15;
+  transition: var(--transition);
+}
+
+.link-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 15px var(--gold-glow);
+}
+
+.link-card:hover::before {
+  width: 100%;
+}
+
+.link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(201, 168, 76, 0.08);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 20px;
+  margin-right: 16px;
+  transition: var(--transition);
+}
+
+.link-card:hover .link-icon {
+  background: var(--gold);
+  color: var(--black);
+  transform: scale(1.05);
+}
+
+.link-text {
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  flex-grow: 1;
+}
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(168, 176, 188, 0.5);
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+/* Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
