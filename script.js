@@ -21,18 +21,18 @@ class Particle {
     this.speedY = Math.random() * 1 - 0.5;
     this.opacity = Math.random() * 0.4 + 0.1;
   }
-  
+
   update() {
     this.x += this.speedX;
     this.y += this.speedY;
-    
+
     // Reposiciona a partícula se ela sair da tela
     if (this.x < 0) this.x = w;
     if (this.x > w) this.x = 0;
     if (this.y < 0) this.y = h;
     if (this.y > h) this.y = 0;
   }
-  
+
   draw() {
     ctx.fillStyle = `rgba(201, 168, 76, ${this.opacity})`;
     ctx.beginPath();
